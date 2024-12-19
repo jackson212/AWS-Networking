@@ -1,3 +1,4 @@
-terraform/*
+.terraform/*
 terraform.tstate
-terraform.lock.hcl
+.terraform.lock.hc
+jackson
