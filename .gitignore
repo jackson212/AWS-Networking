@@ -2,3 +2,8 @@
 terraform.tstate
 .terraform.lock.hc
 jackson
+jack
+.man/*
+
+ok/ss
+jack
