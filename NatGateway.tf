@@ -1,4 +1,4 @@
-#creating elastic ip for NAT gateway. elastic
+#creating elastic ip for NAT gateway. elastic ip will allow dynamic ip which will stay there even if ec2 shut down
 resource "aws_eip" "nat_eip" {
   vpc = true
   tags = {

@@ -1,5 +1,5 @@
 
-
+#Public route tables and  Internet gateway is associate to it.
 resource "aws_route_table" "Public RT" {
   
 
@@ -20,7 +20,7 @@ resource "aws_route_table" "Public RT" {
 }
 
 
-
+#private route table  and enable route  with natGateways for internet access
 
 resource "aws_route_table" "private_route_table" {
   vpc_id = aws_vpc.myVPC.id
@@ -36,6 +36,7 @@ resource "aws_route_table" "private_route_table" {
 }
 
 
+#public routetable associate with public subnets
 
 resource "aws_route_table_association" "private" {
   count = length(var.private_subnet_cidr_blocks)
@@ -44,11 +45,15 @@ resource "aws_route_table_association" "private" {
   route_table_id = aws_route_table.private[count.index].id
 }
 
+#private routetable associate with private subnets
+
 resource "aws_route_table_association" "public" {
   count = length(var.public_subnet_cidr_blocks)
 
   subnet_id      = aws_subnet.public[count.index].id
   route_table_id = aws_route_table.public.id
 }
+
+
 
 
