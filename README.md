@@ -22,13 +22,10 @@ Before running this Terraform project, ensure that you have the following instal
 
 ### 1. Clone this repository:
 
-```bash
 git clone https://github.com/jackson212/AWS-Networking.git
 cd aws-ec2-terraform
 Ensure that your AWS credentials are set up correctly using either environment variables or AWS CLI:
 
-bash
-Copy code
 aws configure
 
 
@@ -65,6 +62,7 @@ Security Considerations
 Ensure that you are not exposing sensitive data (e.g., private keys or passwords) in your Terraform files.
 Use security groups to restrict inbound and outbound traffic to your EC2 instances.
 Store any sensitive variables securely using terraform.tfvars or AWS Secrets Manager.
+
 Cleanup
 To destroy the resources created by Terraform, run the following command:
 
@@ -75,15 +73,7 @@ This will prompt you to confirm that you want to delete the resources created by
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Notes:
-This project is designed to be compatible with the AWS Free Tier for instance types such as t2.micro and t3.micro and uses Amazon Linux 2 or Ubuntu AMIs.
-If you are using a custom AMI, ensure that the AMI ID is correct and compatible with your region.
-markdown
-Copy code
 
----
-
-### Key Sections in the README:
 
 
  **Requirements**: Lists the tools you need (Terraform, AWS CLI, etc.) to run the project.
