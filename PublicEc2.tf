@@ -1,16 +1,14 @@
 
 
 
-resource "aws_instance" "Public instance" {
+resource "aws_instance" "Public_ec2_instance" {
   ami                         = ami-0e2c8caa4b6378d8c  # here it showing ubuntu machine id
   instance_type               = "t2.micro"             # t2.micro machine
   subnet_id                   =  aws_subnet.public_subnet.id #choosing public_subnet for this instance
   key_name                    = aws_key_pair.key.Key_pair  # 
   associate_public_ip_address = true
-  security_groups             = [aws_security_group.allow_ssh_a.id]
-  lifecycle {
-    ignore_changes = [security_groups]
-  }
+  security_groups             = [aws_security_group.public_ec2_security_group.id]
+ 
 }
 
 #security group for public ec2 ,which contain inbound and outbound rules.

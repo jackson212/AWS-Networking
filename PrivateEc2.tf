@@ -1,23 +1,20 @@
 
 
 
-resource "aws_instance" "Public instance" {
+resource "aws_instance" "Private_ec2_instance" {
   ami                         = ami-0e2c8caa4b6378d8c  # here it showing ubuntu machine id
   instance_type               = "t2.micro"             # t2.micro machine
   
   subnet_id                   =  aws_subnet.private_subnet.id #choosing public_subnet for this instance
   key_name                    = aws_key_pair.key.Key_pair  # 
   associate_public_ip_address = false
-  security_groups             = [aws_security_group.allow_ssh_a.id]
+  security_groups             = [aws_security_group.private_ec2_security_group.id]
   
-  lifecycle {
-  
-    ignore_changes = [security_groups]
-  }
+
 }
 
-resource "aws_security_group" "public_ec2_security_group" {
-  vpc_id = aws_vpc.vpc_a.id
+resource "aws_security_group" "private_ec2_security_group" {
+  vpc_id = aws_vpc.VPC.id
 #all outbound traffic
   egress {
     
@@ -39,13 +36,13 @@ resource "aws_security_group" "public_ec2_security_group" {
     cidr_blocks = [data.aws_vpc.VPC.cidr_block] 
   
   }
-    # Allow inbound traffic on port 80 (HTTP)
+
   ingress {
    
     from_port  = 80
     to_port    = 80
     protocol   = "tcp"
-    cidr_blocks = [data.aws_vpc.VPC.cidr_block] 
+    cidr_blocks = [data.aws_vpc.VPC.cidr_block] // 
   
   }
 
@@ -54,3 +51,4 @@ resource "aws_security_group" "public_ec2_security_group" {
 
 }
 
+    # Allow inbound traffic on port 80 (HTTP)
