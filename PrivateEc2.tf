@@ -12,7 +12,9 @@ resource "aws_instance" "Private_ec2_instance" {
   associate_public_ip_address = false
   vpc_security_group_ids            = [aws_security_group.ec2_security_group.id]
   
-
+  tags = {
+    Name = "private-instance"
+  }
 }
 
 # resource "aws_security_group" "private_ec2_security_group" {

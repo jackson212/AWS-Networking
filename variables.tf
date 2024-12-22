@@ -1,8 +1,3 @@
-variable "name" {
-  default     = "Default"
-  type        = string
-  description = "VPC"
-}
 
 variable "project" {
   type        = string

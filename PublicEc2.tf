@@ -8,7 +8,11 @@ resource "aws_instance" "Public_ec2_instance" {
   key_name                    = "Key_pair"  # 
   associate_public_ip_address = true
   vpc_security_group_ids           = [aws_security_group.ec2_security_group.id]
- 
+  
+   tags = {
+    Name = "public-instance"
+  }
+
 }
 
 

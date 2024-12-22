@@ -6,7 +6,7 @@ enable_dns_support = true
 enable_dns_hostnames = true
    tags = merge(
     {
-      Name        = var.name,
+      Name        = "VPC",
       Project     = var.project,
       
     },
